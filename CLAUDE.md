@@ -12,6 +12,7 @@ Claude Code はこのファイルを最初に読み、ここに書かれたル�
 - 週ごとの計画と完了条件: `docs/PLAN.md`
 - 求人と証拠の対応、応募の準備状況: `docs/APPLY.md`(ローカルのみ。.gitignore 済みで公開しない)
 - 評価の決まり: `docs/EVAL.md`
+- 開発環境の作り方: `docs/SETUP.md`
 
 ## 構成と言語の役割(変えない)
 
