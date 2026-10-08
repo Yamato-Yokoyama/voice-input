@@ -1,0 +1,26 @@
+# private recordings and transcripts
+data/
+notes-pending/
+
+# models
+*.bin
+*.gguf
+models/
+
+# build outputs
+cpp/build/
+java/build/
+java/.gradle/
+mcp/node_modules/
+mcp/dist/
+eval/.venv/
+__pycache__/
+
+# secrets
+.env
+*.key
+
+.DS_Store
+
+# job application notes (local only)
+docs/APPLY.md
