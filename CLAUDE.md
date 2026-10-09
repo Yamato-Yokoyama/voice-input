@@ -55,14 +55,34 @@ Claude Code はこのファイルを最初に読み、ここに書かれたル�
 | 何を | どこに | 誰が書くか |
 |---|---|---|
 | 設計、README、コード、評価結果(`results/`)、計画(`docs/`) | このリポジトリ(VS Code) | Claude Code |
-| 開発ログ(その日やったこと、詰まったこと、決めたこと) | Obsidian `Project/VoiceInput/devlog/YYYY-MM-DD.md` | Claude Code が作業の終わりに Obsidian MCP で書く |
-| 学んだこと、理解のノート、相談や振り返りのメモ、全体スケジュール | Obsidian `Project/VoiceInput/` 配下 | Claude Code が Obsidian MCP で書く。本人が追記する |
+| 開発ログ(その日やったこと、詰まったこと、決めたこと) | Obsidian `Project/VoiceInput/devlog/YYYY-MM-DD.md` | Claude Code が作業の終わりに書く(下の「終わり」) |
+| 学んだこと、理解のノート、相談や振り返りのメモ、全体スケジュール | Obsidian `Project/VoiceInput/` 配下 | Claude Code が書く。本人が追記する |
 | 応募の準備状況の更新 | `docs/APPLY.md` と Obsidian のハブの「応募」節の両方 | Claude Code |
 
 - Obsidian のハブ: `Project/VoiceInput/Hub — 日英混在の音声入力.md`。迷ったらここに戻る
 - 開発ログは Obsidian のテンプレート `Templates/開発ログテンプレート.md` の形(Done / Stuck / Decision / Insight of the day / Next)で書く
-- 作業セッションの最後に必ず: (1) 開発ログを書く、(2) ハブの「今どこ？」を更新する、(3) 証拠が増えたら `docs/APPLY.md` とハブの「応募」節を更新する
-- Obsidian MCP が使えないときは、`notes-pending/YYYY-MM-DD.md` に同じ内容を書いて本人に伝える(このフォルダは git に入れない)
+- Obsidian の Vault の場所: `~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian Vault/`。Obsidian MCP が無いときは、このフォルダのファイルを直接読み書きする
+- 直接も MCP も使えないときは、`notes-pending/YYYY-MM-DD.md` に同じ内容を書いて本人に伝える(このフォルダは git に入れない)
+
+## セッションの始め方と終わり方
+
+**始め**(「前回の続き」「確認リストの続き」などと言われたら、作業の前に):
+
+1. Obsidian の `Project/VoiceInput/devlog/` で一番新しい日付のファイルを読み、最後のエントリの Next を確認する
+2. ハブの「今どこ？」と、`Project/VoiceInput/` にある確認リスト・ハンズオンのノートで、本人が今どこまで進んだか(チェックの付き具合)を見る
+3. `gh issue list --milestone <今の週>` で残りの Issue を見る
+4. 上の3つから「今日やること」を1〜3個に絞って提案する
+
+**終わり**(本人が「終わり」「今日はここまで」と言ったら、全部まとめてやる。本人は Issue を自分で閉じなくてよい):
+
+1. この回で終わった Issue を閉じる。コメントに `devlog YYYY-MM-DD` と何をしたかを1行書く。終わったか迷う Issue は閉じずに本人に聞く
+2. 開発ログを書く(同じ日のファイルがあれば、エントリを足す)
+3. ハブの「今どこ？」を更新する
+4. 証拠が増えたら `docs/APPLY.md` とハブの「応募」節を更新する
+5. `hub sync` を実行し、project-hub の集計を Obsidian の `Project/Hub/` に写す
+6. やったこと(閉じた Issue、書いたノート)を本人に短く報告する
+
+- 進捗の数え方: project-hub が数えるのは GitHub の Milestone(W1〜W8)に紐づいた Issue だけ。Obsidian のチェックは数えない。新しい週に入るときは、`docs/PLAN.md` のその週の項目を Issue にして Milestone に付ける
 
 ## 応募について(最重要)
 
