@@ -13,7 +13,7 @@ Off-the-shelf dictation breaks when Japanese speech contains English technical t
 | `cpp/` | C++17 | Recognition engine wrapping whisper.cpp (RAII, Strategy pattern, streaming), exposed over HTTP |
 | `java/` | Java 21, Spring Boot 3 | Service layer: REST API, swappable recognizers via dependency injection, dictionary and LLM correction, Actuator metrics |
 | `eval/` | Python | Evaluation harness: MER, CER, B-WER/U-WER, latency p50/p95, RTF |
-| `mcp/` | TypeScript | MCP server exposing `transcribe` and `evaluate` to coding agents |
+| `mcp/` | Python | MCP server exposing `transcribe` and `evaluate` to coding agents |
 
 ## Evaluation
 

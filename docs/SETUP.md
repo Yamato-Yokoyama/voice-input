@@ -14,7 +14,7 @@ brew install cmake ninja llvm openjdk@21 gradle uv ffmpeg
 | C++ 静的解析 | clang-tidy(Homebrew LLVM 23) | keg-only。`/opt/homebrew/opt/llvm/bin/clang-tidy` で呼ぶ |
 | Java | OpenJDK 21.0.12、Gradle 9.8 | keg-only。既定の `java` は 17 のまま。下の「Java 21」を参照 |
 | Python | uv、Python 3.12.15 | `eval/` で `.python-version` により 3.12 に固定 |
-| TypeScript | Node 26.9 | CLAUDE.md の想定は Node 22。第6週の前に揃えるか決める |
+| TypeScript | Node 26.9 | 使わない(2026-10-09 に MCP サーバーを Python に変更) |
 | 音声変換 | ffmpeg 9.0 | whisper.cpp 用に 16kHz モノラル wav へ変換 |
 
 ### Java 21

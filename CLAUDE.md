@@ -6,7 +6,7 @@ Claude Code はこのファイルを最初に読み、ここに書かれたル�
 
 日本語の中に英語の技術用語が混ざる話し方(例: 「C++のビルドが通らない」「Claudeに聞く」)を、iPhone の音声入力より正確に、話し終わりから1秒未満で文字にする道具を作る。自分で毎日使い、誤り率と遅延を記録し続ける。
 
-同時に、応募先の求人が求める言語(C++、Java + Spring Boot、TypeScript、MCP、CI/CD、Docker)の実績を、動くコードと測った数字で作る。趣味の位置づけだが本気でやる。
+同時に、応募先の求人が求める言語(C++、Java + Spring Boot、MCP、CI/CD、Docker)の実績を、動くコードと測った数字で作る。趣味の位置づけだが本気でやる。
 
 - 設計メモ(全体像): https://claude.ai/code/artifact/fccf5022-bfb4-456c-8122-43476cc0b84c
 - 週ごとの計画と完了条件: `docs/PLAN.md`
@@ -21,7 +21,7 @@ Claude Code はこのファイルを最初に読み、ここに書かれたル�
 | `cpp/` | C++17 | 認識エンジン。whisper.cpp を包む自作ライブラリ。RAII でモデルのメモリを管理、デコード設定は Strategy パターン、ストリーミング用リングバッファ。HTTP サーバーとして公開 |
 | `java/` | Java 21 + Spring Boot 3 | 司令塔。REST API、`Recognizer` インターフェースを依存性注入で差し替え(whisper.cpp / Vosk / Gemini)、辞書補正、Gemini での文脈補正、ログ、Actuator |
 | `eval/` | Python 3.12 | 評価ハーネス。REST API 経由でテストセットを流し、jiwer で MER・CER・B-WER・U-WER、遅延 p50/p95、RTF を出す |
-| `mcp/` | TypeScript | MCP サーバー。`transcribe` と `evaluate` をツールとして公開し、Claude Code から評価を回せるようにする |
+| `mcp/` | Python 3.12 | MCP サーバー(公式 Python SDK の FastMCP)。`transcribe` と `evaluate` をツールとして公開し、Claude Code から評価を回せるようにする |
 | `docker-compose.yml` | YAML | C++ エンジンと Spring Boot を1コマンドで起動 |
 | `.github/workflows/` | YAML | PR ごとに C++ と Java のテスト、公開データの小さな固定セットで評価 |
 | `data/` | — | 自分の録音と正解。**git に入れない**(.gitignore 済み) |
@@ -35,7 +35,7 @@ Claude Code はこのファイルを最初に読み、ここに書かれたル�
 - C++: CMake、GoogleTest、AddressSanitizer、clang-tidy
 - Java: Gradle(Kotlin DSL)、JUnit 5
 - Python: uv で仮想環境、jiwer、pandas、matplotlib
-- TypeScript: Node 22、公式の MCP TypeScript SDK
+- MCP: 公式の MCP Python SDK(FastMCP)。`eval/` と同じく uv で管理
 - LLM: Gemini API(無料枠には個人的な音声・内容を送らない)
 
 ## 作業のルール
@@ -47,6 +47,7 @@ Claude Code はこのファイルを最初に読み、ここに書かれたル�
 5. **週1本で区切る**。各週の終わりに `results/week-NN.md` に「仮説 → 実装 → 結果の表 → 3行の考察」を書く
 6. **事実だけ書く**。README、results、応募用の文に、やっていないこと・測っていない数字を書かない。未確認のことは「未確認」と書く
 7. ブランチは `feat/weekNN-<内容>`、PR を作ってからマージする。コミットメッセージは英語
+8. **誰がコードを書くか**(2026-10-09 決定)。`cpp/` と `java/` は Claude Code が動く実装まで書く(Java は 2026-10-09 に追加)。本人は「読んで説明できるようにする」「ASan と clang-tidy の指摘を直す」「Strategy を1つ足すなどの改造」を担当するので、C++ や Java を書いたら本人がやる作業を必ず添える。毎週の形は「読んで説明する」「AI なしで1つ変えて本人がコミットする」「Claude がわざと入れたバグを本人が見つけて直す」。Obsidian のハンズオン(C/C++、Java)は本人が読む参照用。`cpp/` と `java/` 以外(`eval/`、`mcp/` などの Python)は、Claude Code が設計と TODO 付きの骨組みを作り、中身は本人が書く
 
 ## ノートのルール(絶対条件)
 

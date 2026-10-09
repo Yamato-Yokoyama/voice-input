@@ -54,7 +54,7 @@
 
 ## 第6週(11/16〜11/22) MCP でエージェントにつなぐ
 
-- [ ] `mcp/` に TypeScript の MCP サーバー: `transcribe`(音声ファイル → 文字)、`evaluate`(エンジン名 → 指標の表)
+- [ ] `mcp/` に Python の MCP サーバー(FastMCP、本人が書く): `transcribe`(音声ファイル → 文字)、`evaluate`(エンジン名 → 指標の表)
 - [ ] Claude Code に登録し、「辞書に1語足して評価を回し、前回と比べる」を Claude Code から実行する
 - [ ] その手順と結果を README に残す
 
