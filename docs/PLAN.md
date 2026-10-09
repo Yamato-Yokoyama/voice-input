@@ -2,6 +2,8 @@
 
 期間: 2026-10-12(月)〜 2026-12-06(日)。1週1本。応募で問われる C++ と Spring Boot を最初の3週で形にする。
 
+**誰が書くか**(2026-10-09 に変更、`CLAUDE.md` のルール8): `cpp/` と `java/` は Claude Code が書き、本人は毎週「読んで説明する」「AI なしで1つ変えてコミット」「わざと入れたバグを見つけて直す」をやる。Python(`eval/`、`mcp/`)は本人が書く。日付は変えない。C++ と Java の週は本人の手が軽くなるので、空いた時間は RAG・ML 塾・リサーチと LeetCode に回す。本人の手が一番かかるのは第1週と第4週(評価)、第6週(MCP)。
+
 各週は「完了条件」をすべて満たしたら完了。満たせなかった項目は次週に持ち越し、`results/week-NN.md` に理由を書く。
 
 ## 第1週(10/12〜10/18) リポジトリとベースライン
@@ -22,6 +24,8 @@
 - [ ] AddressSanitizer でテストを回す。clang-tidy をかける。指摘と直し方を README に残す
 - [ ] whisper.cpp の server サンプルを読み、自作ライブラリを HTTP サーバー(`POST /transcribe`)として公開
 
+**本人の担当**: 第2週の前に C/C++ ハンズオンの 1・1c・2・5 章を終える。Claude Code が書いたエンジンを読んで説明する。Strategy を1つ AI なしで足す(例: 初期プロンプトの語を変える)。ASan・clang-tidy の指摘と、わざと入れたバグを直し、README に直し方を書く
+
 **完了条件**: `cmake --build` と `ctest` が通る。ASan でエラー0。HTTP で wav を送ると文字と処理時間が返る。3つの Strategy の MER を表にした `results/week-02.md`
 
 ## 第3週(10/26〜11/1) Spring Boot の司令塔
@@ -32,6 +36,8 @@
 - [ ] `POST /api/transcribe`(音声を受け取り、文字・使ったエンジン・遅延を返す)
 - [ ] JUnit 5 のテスト(Recognizer はモックで)
 
+**本人の担当**: Java ハンズオンは分からない書き方が出たときに見る。Claude Code が書いた司令塔を読んで説明する。エンドポイントか設定を1つ AI なしで足す。わざと入れたバグを JUnit で見つけて直す
+
 **完了条件**: `./gradlew test` が通る。curl で音声を送ると Spring Boot 経由で C++ エンジンの結果が返る。`results/week-03.md` に Spring Boot 経由で増えた遅延を記録
 
 ## 第4週(11/2〜11/8) Python 評価ハーネスと CI
@@ -40,6 +46,8 @@
 - [ ] `docker-compose.yml`: C++ エンジンと Spring Boot を1コマンドで起動
 - [ ] GitHub Actions: PR ごとに C++(ビルド・テスト)、Java(テスト)、公開データの固定セット(10発話程度)での評価
 - [ ] 公開データの利用条件を確認し、README に出典を書く
+
+**本人の担当**: 評価ハーネス(`eval/`)は本人が書く(Claude Code は TODO 付きの骨組みまで)
 
 **完了条件**: `docker compose up` と `python -m eval.run` の2コマンドで、全指標の表が出る。PR に CI の緑のチェックが付く
 
