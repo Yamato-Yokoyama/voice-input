@@ -6,8 +6,8 @@
 
 ## 第1週(10/12〜10/18) リポジトリとベースライン
 
-- [ ] リポジトリを GitHub に公開(README、CLAUDE.md、docs/)
-- [ ] M4 Mac で whisper.cpp をビルドし、Metal で動かす
+- [x] リポジトリを GitHub に公開(README、CLAUDE.md、docs/)
+- [x] M4 Mac で whisper.cpp をビルドし、Metal で動かす
 - [ ] 普段の話し方で50発話を録音し、正解を付けて `data/testset/v1/` に凍結(半分以上に技術用語・固有名詞を含める)
 - [ ] 辞書語リスト `data/testset/v1/bias_terms.txt` を作る(B-WER 用)
 - [ ] `eval/` に最小の Python スクリプトを置き、iPhone 音声入力と whisper.cpp の MER を測る
